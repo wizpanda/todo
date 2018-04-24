@@ -11,4 +11,7 @@ class User {
 
     String email
     String password
+
+    boolean enabled = true
+    Date created = new Date()
 }
