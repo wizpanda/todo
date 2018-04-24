@@ -9,16 +9,11 @@ class UserController {
 
     static allowedMethods = [signup: "POST"]
 
-    def signup(String email, String password) {
-        User user = new User([
-                email: email,
-                password: password
-        ])
+    UserService userService
 
-        // or directly write
-        //User user = new User(params)
+    def signup() {
+        User user = userService.create(params)
 
-        user.save()
         if (user.hasErrors()) {
             respond([success: false, error: user.errors])
             return
